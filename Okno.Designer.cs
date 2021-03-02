@@ -29,7 +29,6 @@ namespace WF_SignUp
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TBLogin = new System.Windows.Forms.TextBox();
@@ -46,10 +45,6 @@ namespace WF_SignUp
             this.ButtonLogin = new System.Windows.Forms.Button();
             this.ButtonSignIn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // label1
             // 
@@ -170,6 +165,7 @@ namespace WF_SignUp
             this.ButtonLogin.TabIndex = 13;
             this.ButtonLogin.Text = "Zaloguj";
             this.ButtonLogin.UseVisualStyleBackColor = true;
+            this.ButtonLogin.Click += new System.EventHandler(this.ButtonLogin_Click);
             // 
             // ButtonSignIn
             // 
@@ -180,6 +176,7 @@ namespace WF_SignUp
             this.ButtonSignIn.TabIndex = 14;
             this.ButtonSignIn.Text = "Utwórz użytkownika";
             this.ButtonSignIn.UseVisualStyleBackColor = true;
+            this.ButtonSignIn.Click += new System.EventHandler(this.ButtonSignIn_Click);
             // 
             // Okno
             // 
@@ -210,8 +207,6 @@ namespace WF_SignUp
         }
 
         #endregion
-
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TBLogin;
