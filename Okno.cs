@@ -42,12 +42,19 @@ namespace WF_SignUp
             {
                 MessageBox.Show("Podaj login !");
             }
-           /*
-            else if(TBRLogin.Text == User. )
-             {
-                 db.Users.Where(b => b.Login == Users.Login);
-             }
-            */
+
+          
+           // else if(TBRLogin.Text == User. )
+            // {
+           //      db.Users.Where(b => b.Login == Users.Login);
+           //  }
+          //
+
+           // else if(TBRLogin.Text == User. )
+           //  {
+           //      db.
+           // }
+
         }
         private void EmptyPass()
         {
