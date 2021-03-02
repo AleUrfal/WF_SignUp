@@ -30,6 +30,32 @@ namespace WF_SignUp
             MessageBox.Show("Zalogowano pomyślnie " + TBLogin.Text + " " + TBPassword.Text);
         }
 
+        private void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            //Tutaj trzeba dać sprawdzenie logowania itp
+            EmptyLogin();
+            EmptyPass();
+            MessageBox.Show("Zalogowano pomyślnie " + TBLogin.Text + " " + TBPassword.Text);
+        }
+
+        private void ButtonSignIn_Click(object sender, EventArgs e)
+        {
+            //Rejestracja
+            db.Add(new User { Login = TBRLogin.Text, Password = TBRPassword.Text, Birthday = DTPBirthday.Value }) ;
+
+        }
+        private void EmptyLogin()
+        {
+            if (TBLogin.TextLength == 0)
+            {
+                MessageBox.Show("Podaj login !");
+            }
+           // else if(TBRLogin.Text == User. )
+           //  {
+           //      db.
+           // }
+        }
+        private void EmptyPass()
         private void ButtonSignIn_Click(object sender, EventArgs e)
         {
             //Rejestracja
