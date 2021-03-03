@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Security.Cryptography;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WF_SignUp
@@ -13,11 +11,10 @@ namespace WF_SignUp
     public partial class Okno : Form
     {
         public UserContext db;
-        public static List<User> Users = new List<User>();
-        string dbConnect = @"Data Source=Users.db";
+        public static List<User> Users = new List<User>();  
         public Okno()
         {
-            InitializeComponent();
+            InitializeComponent();         
             this.Text = "Logowanie";
             db = new UserContext();
             db.Database.EnsureCreated(); //Tworzenie pliku bazy danych
@@ -38,7 +35,7 @@ namespace WF_SignUp
             else
             {
                 var testuser = db.Users.Where(u => u.Login.Equals(TBLogin.Text)).First();
-                if(testuser.Password.Equals(TBPassword.Text))
+                if(testuser.Password.Equals(Hashfield(TBPassword.Text.Trim())))
                 {
                     MessageBox.Show("Zalogowano !");
                     Rezultat rezultat = new Rezultat(testuser);
@@ -73,7 +70,7 @@ namespace WF_SignUp
                 var testuser = db.Users.Where(u => u.Login.Equals(TBRLogin.Text)).ToList();
                 if(testuser.Count == 0)
                 {
-                    db.Add(new User { Login = TBRLogin.Text, Password = TBRPassword.Text, Birthday = DTPBirthday.Value });
+                    db.Add(new User { Login = TBRLogin.Text, Password = Hashfield(TBRPassword.Text.Trim()), Birthday = DTPBirthday.Value });
                     db.SaveChanges();
                     MessageBox.Show("Utworzono użytkownika ");
                 }
@@ -81,16 +78,19 @@ namespace WF_SignUp
                 {
                     MessageBox.Show("Login zajęty !");
                 }
-                
                
-                
+            }        
+
+        }
+        private static string Hashfield(string stringToHash)
+        {
+            using (var hash = SHA256.Create())
+            {
+                return string.Join("", hash
+                  .ComputeHash(Encoding.UTF8.GetBytes(stringToHash))
+                  .Select(item => item.ToString("x2")));
             }
         }
-        
-        
-      
-        
 
-       
     }
 }
