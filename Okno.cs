@@ -15,6 +15,7 @@ namespace WF_SignUp
     {
         public UserContext db;
         public static List<User> Users = new List<User>();
+        string dbConnect = @"Data Source=Users.db";
         public Okno()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace WF_SignUp
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            string dbConnect = @"Data Source =Users.db";
+           
             //Tutaj trzeba dać sprawdzenie logowania itp
             if (TBLogin.TextLength == 0)
             {
@@ -42,7 +43,7 @@ namespace WF_SignUp
                 try 
                 {
                     sqliteCon.Open();
-                    string Query = "SELECT * FROM Users WHERE Login='" + TBLogin.Text + " ' AND Password='" + TBPassword.Text + "' ";
+                    string Query = "SELECT * FROM Users WHERE Login='" + this.TBLogin.Text + "' AND Password='" + this.TBPassword.Text + "' ";
                     SqliteCommand sqlsearch = new SqliteCommand(Query, sqliteCon);
 
                     sqlsearch.ExecuteNonQuery();
@@ -93,7 +94,7 @@ namespace WF_SignUp
             }
             else
             {
-                MessageBox.Show("Wykonany");
+                MessageBox.Show("Utworzono użytkownika ");
                 db.Add(new User { Login = TBRLogin.Text, Password = TBRPassword.Text, Birthday = DTPBirthday.Value });
                 db.SaveChanges();
             }
