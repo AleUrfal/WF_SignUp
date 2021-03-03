@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,51 +25,28 @@ namespace WF_SignUp
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-           
+
             //Tutaj trzeba dać sprawdzenie logowania itp
-            if (TBLogin.TextLength == 0)
+            if (TBLogin.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Podaj login !");
             }
-            else if (TBPassword.TextLength == 0)
+            else if (TBPassword.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Podaj hasło !");
-            }         
+            }
             else
             {
-                //Połaczenie z bazą danych
-                SqliteConnection sqliteCon = new SqliteConnection(dbConnect);
-                try 
+                var testuser = db.Users.Where(u => u.Login.Equals(TBLogin.Text)).First();
+                if(testuser.Password.Equals(TBPassword.Text))
                 {
-                    sqliteCon.Open();
-                    string Query = "SELECT * FROM Users WHERE Login='" + this.TBLogin.Text + "' AND Password='" + this.TBPassword.Text + "' ";
-                    SqliteCommand sqlsearch = new SqliteCommand(Query, sqliteCon);
-
-                    sqlsearch.ExecuteNonQuery();
-                    SqliteDataReader data = sqlsearch.ExecuteReader();
-
-                    int count = 0;
-                    while(data.Read())
-                    {
-                        count++;
-                    }
-                    if(count == 1)
-                    {
-                        MessageBox.Show("Zalogowano");
-                    }
-                    if (count > 1)
-                    {
-                        MessageBox.Show("Login nie może być taki sam jak hasło spróbuj jeszcze raz");
-                    }
-                    if (count < 1)
-                    {
-                        MessageBox.Show("Zły login lub hasło");
-                    }
+                    MessageBox.Show("Zalogowano !");
+                    Rezultat rezultat = new Rezultat(testuser);
+                    rezultat.ShowDialog();
                 }
-
-                catch(Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Nieprawidłowy login lub hasło");
                 }
               
             }
@@ -94,9 +70,20 @@ namespace WF_SignUp
             }
             else
             {
-                MessageBox.Show("Utworzono użytkownika ");
-                db.Add(new User { Login = TBRLogin.Text, Password = TBRPassword.Text, Birthday = DTPBirthday.Value });
-                db.SaveChanges();
+                var testuser = db.Users.Where(u => u.Login.Equals(TBRLogin.Text)).ToList();
+                if(testuser.Count == 0)
+                {
+                    db.Add(new User { Login = TBRLogin.Text, Password = TBRPassword.Text, Birthday = DTPBirthday.Value });
+                    db.SaveChanges();
+                    MessageBox.Show("Utworzono użytkownika ");
+                }
+                else
+                {
+                    MessageBox.Show("Login zajęty !");
+                }
+                
+               
+                
             }
         }
         
