@@ -13,10 +13,13 @@ namespace WF_SignUp
     public partial class Rezultat : Form
     {
         User user1;
+        DateTime localDate = DateTime.Now;
         public Rezultat(User user)
         {
             user1 = user;
             InitializeComponent();
+            label2.Text = user1.Login;
+            label4.Text = localDate.ToString();
         }
 
 
