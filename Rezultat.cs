@@ -33,28 +33,22 @@ namespace WF_SignUp
             label7.Text = time + " " + dd + " "+ hh;
         }
         private void BirthdayTimer()
-        {
-            var data1 = user1.Birthday;
-            var data2 = DateTime.Now;
-
-            var data3 = DateTime.ParseExact(data1.Year.ToString("YYYY"), "YYYY",null);
-            var s1 = data1 - data3; 
-            var data4 = DateTime.ParseExact(data2.Year.ToString("YYYY"), "YYYY", null);
-            var s2 = data2 - data4;
-
-            if(s1>s2)
+        {         
+            int data1 = DateTime.ParseExact(user1.Birthday.ToString("MM-DD"), "MM-DD", null).DayOfYear;
+            int data2 = DateTime.ParseExact(DateTime.Now.ToString("MM-DD"), "MM-DD", null).DayOfYear;
+            int przestepny = DateTime.IsLeapYear(DateTime.Now.Year) == true ? 366:365;
+            
+            if(data1>data2)
             {
-                label3.Text = "Twoje urodziny są za: " + Convert.ToInt32((s1 - s2).TotalDays).ToString() + " dni";
+                label3.Text = "Twoje urodziny są za: " + (data1 - data2) + " dni";
             }
-            else if(s1 == s2)
+            else if(data1 == data2)
             {
                 label3.Text = "Twoje urodziny są dziś ";
             }
             else
             {
-                bool przestepny = DateTime.IsLeapYear(data2.Year);
-                int dni = przestepny == true ? 366 : 365;
-                label3.Text = "Twoje urodziny są za: " + Convert.ToInt32((s1 - s2).TotalDays + dni).ToString() + " dni";
+                label3.Text = "Twoje urodziny są za: " + (data1 + przestepny - data2) + " dni";
             }
 
         }
