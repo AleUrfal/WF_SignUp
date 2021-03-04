@@ -44,6 +44,8 @@ namespace WF_SignUp
             this.DTPBirthday = new System.Windows.Forms.DateTimePicker();
             this.ButtonLogin = new System.Windows.Forms.Button();
             this.ButtonSignIn = new System.Windows.Forms.Button();
+            this.Button_Pass = new System.Windows.Forms.Button();
+            this.Button_Password = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -178,12 +180,34 @@ namespace WF_SignUp
             this.ButtonSignIn.UseVisualStyleBackColor = true;
             this.ButtonSignIn.Click += new System.EventHandler(this.ButtonSignIn_Click);
             // 
+            // Button_Pass
+            // 
+            this.Button_Pass.Location = new System.Drawing.Point(628, 236);
+            this.Button_Pass.Name = "Button_Pass";
+            this.Button_Pass.Size = new System.Drawing.Size(54, 23);
+            this.Button_Pass.TabIndex = 15;
+            this.Button_Pass.Text = "Odkryj";
+            this.Button_Pass.UseVisualStyleBackColor = true;
+            this.Button_Pass.Click += new System.EventHandler(this.Button_Pass_Click);
+            // 
+            // Button_Password
+            // 
+            this.Button_Password.Location = new System.Drawing.Point(346, 236);
+            this.Button_Password.Name = "Button_Password";
+            this.Button_Password.Size = new System.Drawing.Size(54, 23);
+            this.Button_Password.TabIndex = 16;
+            this.Button_Password.Text = "Odkryj";
+            this.Button_Password.UseVisualStyleBackColor = true;
+            this.Button_Password.Click += new System.EventHandler(this.Button_Password_Click);
+            // 
             // Okno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Button_Password);
+            this.Controls.Add(this.Button_Pass);
             this.Controls.Add(this.ButtonSignIn);
             this.Controls.Add(this.ButtonLogin);
             this.Controls.Add(this.DTPBirthday);
@@ -222,6 +246,8 @@ namespace WF_SignUp
         private System.Windows.Forms.DateTimePicker DTPBirthday;
         private System.Windows.Forms.Button ButtonLogin;
         private System.Windows.Forms.Button ButtonSignIn;
+        private System.Windows.Forms.Button Button_Pass;
+        private System.Windows.Forms.Button Button_Password;
     }
 }
 

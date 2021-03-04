@@ -18,6 +18,8 @@ namespace WF_SignUp
             this.Text = "Logowanie";
             db = new UserContext();
             db.Database.EnsureCreated(); //Tworzenie pliku bazy danych
+            TBPassword.UseSystemPasswordChar = true;
+            TBRPassword.UseSystemPasswordChar = true;
         }
 
         private void ButtonLogin_Click(object sender, EventArgs e)
@@ -40,6 +42,8 @@ namespace WF_SignUp
                     MessageBox.Show("Zalogowano !");
                     Rezultat rezultat = new Rezultat(testuser);
                     rezultat.ShowDialog();
+                    TBLogin.Text = "";
+                    TBPassword.Text = "";
                 }
                 else
                 {
@@ -73,6 +77,9 @@ namespace WF_SignUp
                     db.Add(new User { Login = TBRLogin.Text, Password = Hashfield(TBRPassword.Text.Trim()), Birthday = DTPBirthday.Value });
                     db.SaveChanges();
                     MessageBox.Show("Utworzono użytkownika ");
+                    TBRLogin.Text = "";
+                    TBRPassword.Text = "";
+                   
                 }
                 else
                 {
@@ -92,5 +99,32 @@ namespace WF_SignUp
             }
         }
 
+        private void Button_Pass_Click(object sender, EventArgs e)
+        {
+            if (TBRPassword.UseSystemPasswordChar == false)
+            {
+                TBRPassword.UseSystemPasswordChar = true;
+                Button_Pass.Text = "Odkryj";
+            }
+            else
+            {
+                TBRPassword.UseSystemPasswordChar = false;
+                Button_Pass.Text = "Zakryj";
+            }
+        }
+
+        private void Button_Password_Click(object sender, EventArgs e)
+        {
+            if (TBPassword.UseSystemPasswordChar == false)
+            { 
+                TBPassword.UseSystemPasswordChar = true;
+                Button_Password.Text = "Odkryj";
+            }
+            else 
+            {
+                TBPassword.UseSystemPasswordChar = false;
+                Button_Password.Text = "Zakryj";
+            }
+        }
     }
 }
