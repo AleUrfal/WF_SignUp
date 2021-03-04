@@ -10,6 +10,7 @@ namespace WF_SignUp
 {
     public partial class Okno : Form
     {
+        int a = 1;
         public UserContext db;
         public static List<User> Users = new List<User>();  
         public Okno()
@@ -33,6 +34,10 @@ namespace WF_SignUp
             else if (TBPassword.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Podaj hasło !");
+            }
+            else if (a == 1)
+            {
+                MessageBox.Show("Zarejestruj użytkownika !");
             }
             else
             {
@@ -79,7 +84,7 @@ namespace WF_SignUp
                     MessageBox.Show("Utworzono użytkownika ");
                     TBRLogin.Text = "";
                     TBRPassword.Text = "";
-                   
+                    a = 0;
                 }
                 else
                 {
