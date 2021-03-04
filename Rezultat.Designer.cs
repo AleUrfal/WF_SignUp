@@ -32,12 +32,11 @@ namespace WF_SignUp
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -60,26 +59,6 @@ namespace WF_SignUp
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(81, 136);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(240, 57);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Dzisiaj jest";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(518, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 57);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "00:00:00";
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -89,9 +68,11 @@ namespace WF_SignUp
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft YaHei", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(317, 136);
+            this.label7.Location = new System.Drawing.Point(62, 117);
+            this.label7.MaximumSize = new System.Drawing.Size(750, 0);
+            this.label7.MinimumSize = new System.Drawing.Size(750, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(195, 57);
+            this.label7.Size = new System.Drawing.Size(750, 57);
             this.label7.TabIndex = 6;
             this.label7.Text = "00:00:00";
             // 
@@ -115,17 +96,28 @@ namespace WF_SignUp
             this.label5.TabIndex = 8;
             this.label5.Text = "Dziękuje za skorzystanie z programu";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(62, 187);
+            this.label3.MaximumSize = new System.Drawing.Size(750, 0);
+            this.label3.MinimumSize = new System.Drawing.Size(750, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(750, 57);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "xyz";
+            // 
             // Rezultat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Rezultat";
@@ -140,11 +132,10 @@ namespace WF_SignUp
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
     }
 }
